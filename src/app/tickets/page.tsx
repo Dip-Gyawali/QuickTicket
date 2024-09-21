@@ -1,3 +1,15 @@
+import Alltickets from "./Alltickets";
+
 export default function Tickets(){
-    return <h1>Tickets</h1>
+    return (
+        <main>
+            <nav>
+                <div>
+                    <h1>Tickets</h1>
+                    <p>Currently Opened Tickets</p>
+                </div>
+            </nav>
+            <Alltickets/>
+        </main>
+    )
 }
