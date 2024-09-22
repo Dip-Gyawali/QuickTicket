@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 type Ticket = {
     id:string;
     title:string;
@@ -22,6 +24,7 @@ export default async function Alltickets() {
   return (
     <>
     {tickets.map((ele)=>(
+        <Link href={`tickets/${ele.id}`}>
       <div key={ele.id} className="card my-5">
         <h1>{ele.title}</h1>
         <p>{ele.body.slice(0,200)}...</p>
@@ -29,6 +32,7 @@ export default async function Alltickets() {
             {ele.priority} Priority
         </div>
       </div>
+        </Link>
     ))}
     </>
   )
