@@ -1,6 +1,7 @@
 import Link from "next/link";
+import wait from "wait";
 
-type Ticket = {
+export type Ticket = {
     id:string;
     title:string;
     body:string;
@@ -10,6 +11,7 @@ type Ticket = {
 
 
 async function getData(){
+    await wait(3000);
     const res = await fetch('http://localhost:5000/tickets',{
         next:{
             revalidate:0 //0 means no cache data so next refetches all time new data which might be slow

@@ -1,9 +1,28 @@
+import { notFound } from "next/navigation";
+import type { Ticket } from "../Alltickets";
+import wait from "wait";
+export const DynamicParams = true;
+
+export async function GenerateStaticTicket() {
+    const res = await fetch ('http://localhost:5000/tickets');
+    const data = await res.json()
+
+    return data.map((ele: Ticket)=>({
+        id: ele.id
+    }))
+}
+
+
 async function getData(id: string) {
+    await wait(3000)
   const res = await fetch(`http://localhost:5000/tickets/${id}`, {
     next: {
       revalidate: 60,
     },
   });
+  if(!res.ok){
+    notFound()
+  }
   return res.json();
 }
 
